@@ -341,4 +341,48 @@
             </div>
             <div style="background: rgba(0,0,0,0.6); padding: 20px; border-radius: 15px; border: 1px solid #222; text-align: left;">
                 <p style="margin: 0; font-size: 0.6rem; color: #666;">IBAN Сметка:</p>
-                <p style="margin: 8px 0
+                                <p style="margin: 8px 0; font-family: monospace; font-size: 1.1rem; color: var(--main-green); font-weight: bold;">BG16IORT80481095239201</p>
+                <button onclick="copyIBAN()" id="copyBtn" style="background: transparent; color: var(--main-green); border: 1px solid var(--main-green); padding: 8px 15px; border-radius: 8px; cursor: pointer;">Копирай IBAN</button>
+            </div>
+        </div>
+
+        <div style="background: #0a0a0a; padding: 30px; border-radius: 30px; border: 1px solid #222; margin: 40px 0;">
+            <h2 style="color: var(--main-green);">ВРЪЗКА С НАС</h2>
+            <a href="tel:0884166258" class="contact-link">📞 Тел: 0884 166 258</a>
+            <a href="mailto:blackworld.global@gmail.com" class="contact-link">✉️ Email: blackworld.global@gmail.com</a>
+        </div>
+    </div>
+
+<script>
+    function copyIBAN() {
+        const iban = "BG16IORT80481095239201";
+        navigator.clipboard.writeText(iban).then(() => {
+            const btn = document.getElementById('copyBtn');
+            btn.innerHTML = "Копирано! ✅";
+            setTimeout(() => { btn.innerHTML = "Копирай IBAN"; }, 2000);
+        });
+    }
+
+    const form = document.getElementById("orderForm");
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById("submitBtn");
+        btn.innerHTML = "ИЗПРАЩАНЕ...";
+        btn.disabled = true;
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+            window.location.replace("https://blackworldglobal.github.io/thanks.html");
+        } else {
+            alert("Грешка при изпращането.");
+            btn.innerHTML = "ПОРЪЧАЙ С КАУЗА 🌍";
+            btn.disabled = false;
+        }
+    };
+</script>
+
+</body>
+</html>
