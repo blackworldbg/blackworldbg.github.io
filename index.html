@@ -1107,7 +1107,113 @@ function toggleBlackWorldStory() {
 
 <!-- END BLACK WORLD BONUS CARDS -->
         
-        
+      <!-- BLACK WORLD IMAGE LIGHTBOX -->
+
+<style>
+.bw-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.96);
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.bw-lightbox.active {
+    display: flex;
+}
+
+.bw-lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.bw-lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100000;
+    line-height: 1;
+}
+
+.bw-bonus-card img {
+    cursor: zoom-in;
+}
+</style>
+
+<div id="bwLightbox" class="bw-lightbox">
+    <span class="bw-lightbox-close">&times;</span>
+    <img id="bwLightboxImage" src="" alt="Black World карта">
+</div>
+
+<script>
+(function () {
+
+    const lightbox = document.getElementById("bwLightbox");
+    const lightboxImage = document.getElementById("bwLightboxImage");
+    const closeButton = document.querySelector(".bw-lightbox-close");
+
+    /* 7-те BONUS карти */
+    const bonusImages = document.querySelectorAll(".bw-bonus-card img");
+
+    /* 0/51 */
+    const zeroCard = document.querySelector(
+        'img[src="Screenshot_20261004-082014.png"]'
+    );
+
+    function openLightbox(image) {
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt || "Black World карта";
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("active");
+        lightboxImage.src = "";
+        document.body.style.overflow = "";
+    }
+
+    bonusImages.forEach(function(image) {
+        image.addEventListener("click", function() {
+            openLightbox(image);
+        });
+    });
+
+    if (zeroCard) {
+        zeroCard.style.cursor = "zoom-in";
+
+        zeroCard.addEventListener("click", function() {
+            openLightbox(zeroCard);
+        });
+    }
+
+    closeButton.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", function(event) {
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+})();
+</script>
+
+<!-- END BLACK WORLD IMAGE LIGHTBOX -->  
 
         <div class="manifesto">
             <h2>ВДИГНИ ПОГЛЕД!</h2>
