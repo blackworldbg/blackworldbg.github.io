@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "Black World",
+  "short_name": "Black World",
+  "lang": "bg",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#07130c",
+  "description": "Каузата, романът и мистерията на Black World",
+  "icons": [
+    {
+      "src": "bw-icon32-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "bw-icon32-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
