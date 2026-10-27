@@ -3248,9 +3248,9 @@ window.addEventListener('load', function () {
 @keyframes bwKeyFog{0%{opacity:0;transform:translate(-6%,3%) scale(.9)}13%{opacity:.9}33%{opacity:1;transform:translate(4%,-2%) scale(1.08)}75%{opacity:.9;transform:translate(-3%,2%) scale(1.15)}100%{opacity:0;transform:translate(6%,-4%) scale(1.25)}}
 @keyframes bwKeyVignette{0%{opacity:0}10%,90%{opacity:1}100%{opacity:0}}
 /* Door is visible for the first 1.5s, materializing through fog rather than sliding. */
-@keyframes bwKeyDoorPicture{0%{opacity:0;filter:blur(18px) brightness(.55);transform:translate(-50%,-50%) scale(.9)}9%{opacity:1;filter:blur(3px) brightness(.9);transform:translate(-50%,-50%) scale(.985)}18%,26%{opacity:1;filter:blur(0) brightness(1);transform:translate(-50%,-50%) scale(1)}33.333%{opacity:0;filter:blur(18px) brightness(.65);transform:translate(-50%,-50%) scale(1.035)}100%{opacity:0}}
+@keyframes bwKeyDoorPicture{0%{opacity:0;filter:blur(18px) brightness(.55);transform:translate(-50%,-50%) scale(.9)}9%{opacity:1;filter:blur(3px) brightness(.9);transform:translate(-50%,-50%) scale(.985)}18%,26%{opacity:1;filter:blur(0) brightness(1);transform:translate(-50%,-50%) scale(1)}38.462%{opacity:0;filter:blur(18px) brightness(.65);transform:translate(-50%,-50%) scale(1.035)}100%{opacity:0}}
 /* Words take the remaining 3s, staying readable while mist moves behind them. */
-@keyframes bwKeyDoorWords{0%,33.333%{opacity:0;filter:blur(12px);transform:scale(.95)}41%{opacity:1;filter:blur(0);transform:scale(1)}91%{opacity:1;filter:blur(0);transform:scale(1)}100%{opacity:0;filter:blur(8px);transform:scale(1.025)}}
+@keyframes bwKeyDoorWords{0%,38.462%{opacity:0;filter:blur(12px);transform:scale(.95)}44%{opacity:1;filter:blur(0);transform:scale(1)}94%{opacity:1;filter:blur(0);transform:scale(1)}100%{opacity:0;filter:blur(8px);transform:scale(1.025)}}
 /* A one-second tremor on the apparition, not a left-to-right slide. */
 @keyframes bwKeyTremor{0%,100%{translate:0 0}9%{translate:-3px 2px}18%{translate:3px -2px}29%{translate:-4px 1px}40%{translate:4px 2px}51%{translate:-2px -3px}64%{translate:2px 2px}78%{translate:-1px 1px}90%{translate:1px -1px}}
 #bwKeyDoorOverlay .bw-key-door-shake{position:absolute;inset:0;animation:bwKeyTremor 1s ease-in-out both}
@@ -3266,7 +3266,7 @@ window.addEventListener('load', function () {
   if(!overlay)return;
   window.setTimeout(function(){
     overlay.hidden=false;
-    window.setTimeout(function(){overlay.hidden=true;},4500);
+    window.setTimeout(function(){overlay.hidden=true;},6500);
   },33000);
 })();
 </script>
