@@ -2853,6 +2853,62 @@ const SB='https://qodhkroxmmyooohqnpvt.supabase.co';
 })();
 </script>
 <!-- END BW ORDER COUNTDOWN -->
+<!-- BLACK WORLD SOLD BOOKS COUNTER -->
+<style>
+#bwSoldBooks{
+ position:fixed;
+ top:14px;
+ right:265px;
+ z-index:200002;
+ padding:5px 9px;
+ border:1px solid #00f58a;
+ border-radius:9px;
+ background:#050b08;
+ color:#00f58a;
+ font:700 12px Arial,sans-serif;
+ white-space:nowrap;
+ box-shadow:0 0 9px #00f58a55;
+}
+@media(max-width:600px){
+ #bwSoldBooks{
+  top:12px;
+  right:225px;
+  padding:5px 6px;
+  font-size:10px;
+ }
+}
+</style>
+
+<div id="bwSoldBooks">Продадени: <span id="bwSoldBooksTotal">000</span></div>
+
+<script>
+(async function(){
+ const output=document.getElementById('bwSoldBooksTotal');
+ if(!output)return;
+
+ try{
+  const response=await fetch(
+   'https://qodhkroxmmyooohqnpvt.supabase.co/rest/v1/book_sales_counter?id=eq.1&select=total_books',
+   {
+    cache:'no-store',
+    headers:{
+     'apikey':'sb_publishable_Kz7XitfkABLXiYocNBxzBA_FsRRiFnU'
+    }
+   }
+  );
+
+  if(!response.ok)throw new Error('Counter unavailable');
+
+  const data=await response.json();
+  if(data.length){
+   output.textContent=String(data[0].total_books).padStart(3,'0');
+  }
+ }catch(error){
+  output.textContent='000';
+ }
+})();
+</script>
+<!-- END BLACK WORLD SOLD BOOKS COUNTER -->
 <!-- BLACK WORLD UNIFIED CART V4 -->
 <style>
 #bwCartButton{
